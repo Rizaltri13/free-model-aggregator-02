@@ -4,7 +4,7 @@
 
 # The best live free-model aggregator
 
-One server (`main.py`, Python 3.13, standard library only) that serves the
+One server (`main.ts`, Node 22, standard library only) that serves the
 OpenAI Chat Completions API and the Anthropic Messages API — each in JSON and
 in server-sent events — and answers every request with a **real** completion
 from a free OpenRouter model, dialled through the trial's gateway on the
@@ -17,7 +17,7 @@ For every prompt it:
   house's quality ratings and each model's capabilities (tools, vision, JSON
   mode, context length), and the prompts' manifest;
 - registers a catalog naming exactly those free models, once each — the same
-  document `python3 main.py --list` prints — and answers `GET /v1/models`
+  document `node main.ts --list` prints — and answers `GET /v1/models`
   with that same set in whichever wire the auth header names;
 - ranks the free models that meet the prompt's requirements by the house
   rating, best first, and dials the best on the gateway's Chat Completions
@@ -42,8 +42,8 @@ the same calls.
 ## Run
 
 ```sh
-python3 main.py          # serve (trial mode: MAKEFUN_ENV_URL + OPENAI_BASE_URL + MAKEFUN_PROMPT_FILE)
-python3 main.py --list   # print the catalog document and exit
+node main.ts          # serve (trial mode: MAKEFUN_ENV_URL + OPENAI_BASE_URL + MAKEFUN_PROMPT_FILE)
+node main.ts --list   # print the catalog document and exit
 ```
 
 ## License
